@@ -1,5 +1,7 @@
-n = int(input())
-lst = list(input() for _ in range(n))
+import sys
+
+n = int(sys.stdin.readline())
+lst = list(sys.stdin.readline().strip() for _ in range(n))
 
 str_dic = {}
 for i in range(n):
