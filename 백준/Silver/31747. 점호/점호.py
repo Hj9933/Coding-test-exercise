@@ -9,8 +9,6 @@ cnt = Counter(lst)
 pointer = k-1
 l = Counter(lst[:pointer])
 i = 0
-one = 0
-two = 0
 flag = False
 while True:
     i += 1
@@ -23,31 +21,29 @@ while True:
     else:
         if pointer < n:
             l[lst[pointer]] += 1
-
+    # print(l)
     flag = False
     if l[1] > 0 and l[2] == 0:
-        one += 1
         l[1] -= 1
+        cnt[1] -= 1
         pointer += 1
-        if pointer > n:
-            pointer = n
+        if pointer > n-1:
+            break
     elif l[1] == 0 and l[2] > 0:
-        two += 1
         l[2] -= 1
+        cnt[2] -= 1
         pointer += 1
-        if pointer > n:
-            pointer = n
+        if pointer > n-1:
+            break
     elif l[1] > 0 and l[2] > 0:
-        one += 1
-        two += 1
         l[1] -= 1
         l[2] -= 1
+        cnt[1] -= 1
+        cnt[2] -= 1
         pointer += 2
         flag = True
-        if pointer > n:
-            pointer = n
+        if pointer > n-1:
+            break
 
-    if sum(l.values()) == 0:
-        break
 
-print(i)
+print(i+max(cnt.values()))
